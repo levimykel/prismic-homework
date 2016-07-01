@@ -129,18 +129,17 @@ block body.redesign-homepage.locale-en.nav__fixed(data-nav-active='mobile')
 
                                         //- Define the product variable
                                         - var productContent = result
+                                        
+                                        //- If the product is "aquire" or "learn" then add the class to move the product description to the right
+                                        - var rightClass = 'product-left'
+                                        if (productContent.uid == "acquire" || productContent.uid == "learn") 
+                                            - rightClass = "product-right"
 
-                                        div.product-container.clearfix.homepage__product-wrap
+                                        div.product-container.clearfix.homepage__product-wrap(class=rightClass)
                                             div.product-image(style='background-image: url(' + productContent.getImage('product.resting-image').url + ');' + productContent.getText('product.animation-styles'))
                                             div.product-image-hover.homepage__product-bg-hover(style='background-image: url(' + productContent.getImage('product.hover-image').url + ');' + productContent.getText('product.animation-styles'))
                                             div.content-container
-                                                
-                                                //- If the product is "aquire" or "learn" then add the class to move the product description to the right
-                                                - var rightClass = ''
-                                                if (productContent.uid == "acquire" || productContent.uid == "learn") 
-                                                    - rightClass = "product-right"
-                                                
-                                                div.flex-container(class=rightClass)
+                                                div.flex-container
                                                     div.product-description
                                                         h3 !{productContent.getText('product.subtitle')}
                                                         h2

@@ -67,4 +67,35 @@ jQuery( window ).load(function() {
         }
         
     });
+    
+    
+    
+    // When "Products" or "Resources" is clicked
+    $('.link__triangle-bottom').click(function() {
+        
+        // If the element is active
+        if ($(this).hasClass('active')) {
+
+            // Remove the nav open class on the body
+            $('body').removeClass("nav__open")
+
+            // Remove the "active" class from the nav hamburger element
+            $(this).removeClass('active');
+
+        }  else {
+            
+            // switch the menu content to "mobile"
+            $('body').attr('data-nav-active','mobile');
+
+            // Add the nav open class on the body
+            $('body').addClass("nav__open")
+
+            // Add the "active" class from the nav hamburger element
+            $(this).addClass('active');
+        }
+        
+    });
+    
+    
+    
 });
