@@ -1,0 +1,244 @@
+extends ./header.pug
+
+block body.redesign-homepage.locale-en.nav__fixed(data-nav-active='mobile')
+    
+    include ./navigation.pug
+    
+    div.header-spacer
+    
+    //- Loop through the contents looking for the homepage
+    for result in pageContent
+    
+        //- If the result is of document type "page" and uid is "home" 
+        if result.type == "page" && result.uid == "home"
+        
+            //- Loop through the slices of the page
+            for slice in result.getSliceZone('page.content').slices
+                
+                //- Determine which slice it is
+                case slice.sliceType
+
+                    //---------------------------- Hero CTA Left ----------------------------//
+                    when 'hero-cta-left'
+                        //- Define slice variable
+                        - var sliceContent = slice.value.toArray()[0]
+
+                        section.hero-cta-left.clearfix
+                            div.image-background.mobile-hidden(style='background-image: url(' + sliceContent.getImage('image-background').url + ');')
+                            div.hero-content
+                                div.hero-container
+                                    div.hero-info
+                                        != sliceContent.getStructuredText('text-above').asHtml(ctx.linkResolver)
+                                        
+                                        //- Loop through the contents
+                                        for result in pageContent
+
+                                            //- If the result is of document type "form" and equal to the uid of the linked form
+                                            if result.type == "form" && result.uid == sliceContent.getLink('form-link').uid
+
+                                                //- Define the form variable
+                                                - var formContent = result
+                                        
+                                                form.hero-form(data-signup='form', data-package='', data-plan='basic')
+                                                    div(data-signup='inputs')
+                                                        input.cta-email(type='text', name='email', placeholder=formContent.getText('form.form-text'), data-signup='email')  
+                                                        button.cta-submit(data-track='cta-btn, email-submit', type='submit') !{formContent.getText('form.button-text')}  
+                                                    span.t__h5.c__blue.u__hide(data-signup='success') !{formContent.getText('form.submit-text')}
+                                                div.below-form
+
+                                                    //- Loop through the text in the prismic elements to create the three span elements
+                                                    for heroSpan in formContent.data['form.text-below'].value
+                                                        span.info-list !{heroSpan.text}
+
+                                    div.hero-image
+                                        div.image-background.mobile-visible(style='background-image: url(' + sliceContent.getImage('image-background').url + ');')
+                                        img(src=sliceContent.getImage('image').url, width='555', alt=sliceContent.getImage('image').main.alt)
+
+
+
+                    //---------------------------- Single Image With Background----------------------------//
+                    when 'single-image'
+                        //- Define slice variable
+                        - var sliceContent = slice.value.toArray()[0]
+
+                        section.image-with-background.clearfix
+
+                            div.image-background(style='background-image: url(' + sliceContent.getImage('bg-image').url + ');')
+                            
+                            div.image-wrapper
+                                img.hero-image(src=sliceContent.getImage('main-image').url, width='499', alt=sliceContent.getImage('main-image').main.alt)
+                        
+                        
+
+
+                    //---------------------------- Three Animated SVGs----------------------------//
+                    when 'three-svg'
+                        //- Define slice variable
+                        - var sliceContent = slice.value.toArray()[0]
+
+                        section.three-svg.clearfix
+                            
+                            div.logo-container
+                                img(src=sliceContent.getImage('top-image').url, width='130', alt=sliceContent.getImage('top-image').main.alt)
+                            
+                            != sliceContent.getStructuredText('main-text').asHtml(ctx.linkResolver)
+                            
+                            div.animated-svg-container.clearfix
+                                div.animated-svg-section
+                                    div.svg-container
+                                        !=sliceContent.getText('left-animation')  
+                                    strong.below-svg !{sliceContent.getText('left-animation-text')}
+                                    div.svg-separator
+                                div.animated-svg-section
+                                    div.svg-container
+                                        !=sliceContent.getText('center-animation')
+                                    strong.below-svg !{sliceContent.getText('center-animation-text')}
+                                    div.svg-separator
+                                div.animated-svg-section
+                                    div.svg-container
+                                        !=sliceContent.getText('right-animation')
+                                    strong.below-svg !{sliceContent.getText('right-animation-text')}
+
+
+
+
+                    //---------------------------- Products ----------------------------//
+                    when 'products'
+                        //- Define slice variable
+                        - var sliceContent = slice.value.toArray()[0]
+
+                        //- Products headline
+                        section.products-section
+                            div.headline-container
+                                img.headline-image(src=sliceContent.getImage('headline-image').url, width='680px', alt=sliceContent.getImage('headline-image').main.alt)
+                                != sliceContent.getStructuredText('headline-text').asHtml(ctx.linkResolver)
+
+
+
+                            //- Loop through the product link numbers 
+                            - for (var i = 1; i <= 4; ++i) {
+                            
+                                //- Define the link uid to check for
+                                - var linkNumber = "link" + i
+
+                                //- Loop through the contents looking for product 1
+                                for result in pageContent
+
+                                    //- If the result is of document type "product" and equal to the uid of product 1
+                                    if result.type == "product" && result.uid == sliceContent.getLink(linkNumber).uid
+
+                                        //- Define the product variable
+                                        - var productContent = result
+
+                                        div.product-container.clearfix.homepage__product-wrap
+                                            div.product-image(style='background-image: url(' + productContent.getImage('product.resting-image').url + ');' + productContent.getText('product.animation-styles'))
+                                            div.product-image-hover.homepage__product-bg-hover(style='background-image: url(' + productContent.getImage('product.hover-image').url + ');' + productContent.getText('product.animation-styles'))
+                                            div.content-container
+                                                
+                                                //- If the product is "aquire" or "learn" then add the class to move the product description to the right
+                                                - var rightClass = ''
+                                                if (productContent.uid == "acquire" || productContent.uid == "learn") 
+                                                    - rightClass = "product-right"
+                                                
+                                                div.flex-container(class=rightClass)
+                                                    div.product-description
+                                                        h3 !{productContent.getText('product.subtitle')}
+                                                        h2
+                                                            a(href='#')
+                                                                span.product-icon(style='top: -3px;')
+                                                                    img(src=productContent.getImage('product.graphic').url, width='35', alt=productContent.getImage('product.graphic').main.alt)
+                                                                |  !{productContent.getText('product.title')}
+                                                        div.text-container
+                                                            p !{productContent.getText('product.description')} 
+                                                            a.product-button(href='#') !{productContent.getText('product.button-text')} 
+                                                    div.mobile-content
+                                                        img(src=productContent.getImage('product.mobile-image').url, width='767', alt=productContent.getImage('product.mobile-image').main.alt)
+                                                        div.mobile-text
+                                                            p !{productContent.getText('product.description')}   
+                                                            a.product-button(href='#') !{productContent.getText('product.button-text')} 
+                                                        a.product-placeholder(href='#')
+                            - }
+                                            
+                                            
+                            
+                            //- Product CTA
+                            div.product-cta
+                                div.flex-container.clearfix
+                                    div.text-container
+                                        != sliceContent.getStructuredText('product-text').asHtml(ctx.linkResolver)
+                                    div.info-container
+                                        div.product-box
+                                            img(data-large=sliceContent.getImage('product-image').url, data-lazy-load='true', data-medium=sliceContent.getImage('product-image').url, data-small=sliceContent.getImage('product-mobile-image').url, src=sliceContent.getImage('product-image').url, width='361', alt=sliceContent.getImage('product-image').main.alt)
+                                            div.product-box-text
+                                                != sliceContent.getText('product-cta-text')
+                                                div.product-box-cta
+                                                    a.cta-button(href='#') !{sliceContent.getText('product-button-text')}
+                                                    div.cta-side-text(style='padding-left: 20px;') !{sliceContent.getText('product-cta-side-text')}
+                                
+                            
+
+                            
+        
+        
+        
+                    //---------------------------- Highlight ----------------------------//
+                    when 'highlight'
+                        //- Define slice variable
+                        - var sliceContent = slice.value.toArray()[0]
+        
+                        section.highlight.clearfix
+                            div.content-container
+                                div.text-container
+                                    h3 !{sliceContent.getText('headline')}
+                                    p !{sliceContent.getText('text')}
+                                    a.highlight-button.highlight-button-desktop(href='#') !{sliceContent.getText('button-text')}
+                                div.image-container
+                                    img(data-large=sliceContent.getImage('image').url, data-lazy-load='true', data-medium=sliceContent.getImage('image').url, data-small=sliceContent.getImage('mobile-image').url, src=sliceContent.getImage('image').url, width='832', alt=sliceContent.getImage('image').main.alt)
+                                    a.highlight-button.highlight-button-mobile(href='#') !{sliceContent.getText('button-text')}
+                        
+                        
+    
+    
+                    //---------------------------- Highlight ----------------------------//
+                    when 'page-bottom-cta'
+                        //- Define slice variable
+                        - var sliceContent = slice.value.toArray()[0]
+    
+                        section.page-bottom-cta
+                            div.background
+                            div.content-container
+                                div.cta-container
+                                    h2 !{sliceContent.getText('headline')}
+                                    
+                                    //- Loop through the contents
+                                    for result in pageContent
+
+                                        //- If the result is of document type "form" and equal to the uid of the linked form
+                                        if result.type == "form" && result.uid == sliceContent.getLink('form-link').uid
+
+                                            //- Define the form variable
+                                            - var formContent = result
+                                    
+                                            form.cta-form.clearfix(data-signup='form', data-package='', data-plan='basic')
+                                                div(data-signup='inputs')
+                                                    input.cta-email(type='text', name='email', placeholder=formContent.getText('form.form-text'), data-signup='email')
+                                                    button.cta-submit(data-track='cta-btn, email-submit', type='reset') !{formContent.getText('form.button-text')}
+                                                span.t__h5.c__blue.u__hide(data-signup='success') Thanks! We&rsquo;ll send you an email to help you get started.
+                                            div.below-form
+
+                                                //- Loop through the text in the prismic elements to create the three span elements
+                                                for heroSpan in formContent.data['form.text-below'].value
+                                                    span.info-list !{heroSpan.text}
+
+                                    div.cta-hr
+                                    div.citation-container
+                                        img.avatar(src=sliceContent.getImage('avatar').url, width='72', alt=sliceContent.getImage('avatar').main.alt)
+                                        p.citation-quote !{sliceContent.getText('citation')}
+                                        div.signature-block
+                                            img(src=sliceContent.getImage('signature').url, width='100', alt=sliceContent.getImage('signature').main.alt)
+                                            div.signature-title !{sliceContent.getText('signature-title')}
+                                img.cta-image(data-large=sliceContent.getImage('bottom-image').url, data-lazy-load='true', data-medium=sliceContent.getImage('bottom-image-medium').url, data-small=sliceContent.getImage('bottom-image-small').url, src=sliceContent.getImage('bottom-image').url, width='1538', alt=sliceContent.getImage('bottom-image').main.alt)
+
+
+
+    include ./footer.pug

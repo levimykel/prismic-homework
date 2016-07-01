@@ -1,0 +1,161 @@
+block body.redesign-homepage.locale-en.nav__fixed(data-nav-active='mobile')
+
+    .nav.nav__primary
+        .container.nav__bg
+            .nav__top.center.nav__padding
+                a.brand__logo.nav__logo(href='#')
+                    img(alt='Intercom Logo', src='/images/_svg/logo.svg', width='117')
+                nav.u__inline-block.nav__links
+                    a.link__triangle-bottom.nav__link(href='#', data-nav='products', data-track='nav-btn, products')
+                        | Products
+                        span.nav__link-arrow
+                    |  
+                    a.link__triangle-bottom.nav__link(href='#', data-nav='resources')
+                        | Resources
+                        span.nav__link-arrow
+                    |  
+                    a.nav__link(href='#', data-track='nav-btn, blog') Blog
+                    |  
+                    a.nav__link(href='#', data-track='nav-btn, log-in', data-track-gtm='nav-click-log-in') Log&nbsp;in
+                a.nav__hamburger(href='#', data-nav='mobile')
+                    span.link__hamburger
+                    span.nav__link-arrow.nav__link-arrow-hamburger
+                .nav__cta
+                    form.cta__form.cta__form-small(data-signup='form', data-package='', data-plan='basic')
+                        div(data-signup='inputs')
+                            input.input-small.cta-email(type='text', name='email', placeholder='Enter your email', data-signup='email', style='')
+                            |  
+                            button.btn.btn__primary.btn__small.cta__submit(type='reset', data-track='nav-btn, get-started-email') Get Started
+                        |  
+                        span.t__h5.c__blue.u__hide(data-signup='success') Thanks! We&rsquo;ll send you an email to help you get started.
+            .nav__content(style='max-height: 993px;')
+                .nav__padding.nav__divider(data-nav-wrap='products')
+                    .nav__table
+                        a.nav__content-link(data-track='sub-nav-btn, acquire', href='#')
+                            span.product-icon__small
+                                img(alt='Live chat button', src='/images/_svg/acquire.svg', width='25')
+                            .sp__1
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Acquire
+                            h4.t__h6.c__grey.nav__subheadline Live Chat
+                            p.nav__desc Chat with visitors on your website and convert them to customers
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        |  
+                        a.nav__content-link(data-track='sub-nav-btn, engage', href='#')
+                            span.product-icon__small
+                                img(alt='Marketing Automation button', src='/images/_svg/engage.svg', width='25')
+                            .sp__1
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Engage
+                            h4.t__h6.c__grey.nav__subheadline Marketing Automation
+                            p.nav__desc Onboard &amp; retain customers with targeted email &amp; in-app messages
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        |  
+                        a.nav__content-link(data-track='sub-nav-btn, learn', href='#')
+                            span.product-icon__small
+                                img(alt='Customer feedback button', src='/images/_svg/learn.svg', width='25')
+                            .sp__1
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Learn
+                            h4.t__h6.c__grey.nav__subheadline Customer Feedback
+                            p.nav__desc Ask the right customers to get quality feedback in your app &amp; by email
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        |  
+                        a.nav__content-link(data-track='sub-nav-btn, support', href='#')
+                            span.product-icon__small
+                                img(alt='Customer support button', src='/images/_svg/support.svg', width='25')
+                            .sp__1
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Support
+                            h4.t__h6.c__grey.nav__subheadline Customer Support
+                            p.nav__desc Let customers ask for help &amp; respond in your app, by email &amp; via Facebook
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                    |  
+                    a.nav__divider.nav__content-footer.u__block.nav__content-footer-link(href='#')
+                        span.c__dark-blue.nav__content-footer-item All products are powered by the Intercom Platform
+                        |  
+                        span.nav__content-footer-item See who your customers are and what they do in your app
+                        |  
+                        span.c__blue.link__triangle-right.nav__content-footer-triangle Free Forever
+                .nav__padding.nav__divider(data-nav-wrap='resources')
+                    .nav__table
+                        a.nav__content-link.nav__content-link-5(data-track='sub-nav-btn, customers', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Customers
+                            p.nav__desc See how customers like InVision are using Intercom
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        a.nav__content-link.nav__content-link-5(data-track='sub-nav-btn, docs', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Docs
+                            p.nav__desc Learn how to install, configure, and use Intercom&apos;s products
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        a.nav__content-link.nav__content-link-5(data-track='sub-nav-btn, get-demo', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Get a Demo
+                            p.nav__desc Get a demo of any Intercom product with live Q&amp;A
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        a.nav__content-link.nav__content-link-5(data-track='sub-nav-btn, podcast', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Podcast
+                            p.nav__desc Hear interviews with leaders in product, design &amp; more
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                        a.nav__content-link.nav__content-link-5(data-track='sub-nav-btn, developers', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Developers
+                            p.nav__desc Use our APIs to integrate Intercom with other services
+                            |  
+                            button.btn.btn__primary.btn__smallest.nav__content-btn Learn more
+                    |  
+                    a.nav__divider.nav__content-footer.u__block.nav__content-footer-link(data-track='sub-nav-btn, sub-nav-cta', href='#')
+                        span.c__dark-blue.nav__content-footer-item We&rsquo;ve launched our new book - Intercom on Jobs-to-be-Done
+                        |  
+                        span.c__blue.link__triangle-right.nav__content-footer-triangle Get your copy now
+                .nav__padding(data-nav-wrap='mobile')
+                    .u__cf.nav__mobile-section
+                        .c__grey Products
+                        a.nav__content-link.nav__content-link-full(data-track='mobile-nav-btn, acquire', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline
+                                span.nav__content-icon.product-icon__small
+                                    img(alt='Live chat button', src='/images/_svg/acquire.svg', width='25')
+                                |  Acquire 
+                                span.c__blue.nav__headline-desc Live Chat
+                        a.nav__content-link.nav__content-link-full(data-track='mobile-nav-btn, engage', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline
+                                span.nav__content-icon.product-icon__small
+                                    img(alt='Marketing Automation button', src='/images/_svg/engage.svg', width='25')
+                                |  Engage 
+                                span.c__blue.nav__headline-desc Marketing Automation
+                        a.nav__content-link.nav__content-link-full(data-track='mobile-nav-btn, learn', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline
+                                span.nav__content-icon.product-icon__small
+                                    img(alt='Customer feedback button', src='/images/_svg/learn.svg', width='25')
+                                |  Learn 
+                                span.c__blue.nav__headline-desc Customer Feedback
+                        a.nav__content-link.nav__content-link-full(data-track='mobile-nav-btn, support', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline
+                                span.nav__content-icon.product-icon__small
+                                    img(alt='Customer support button', src='/images/_svg/support.svg', width='25')
+                                |  Support 
+                                span.c__blue.nav__headline-desc Customer Support
+                    .u__cf.nav__divider.nav__mobile-section.nav__mobile-section-no-headline
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, pricing', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Pricing
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, blog', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Blog
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, customers', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Customers
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, get-demo', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Get a Demo
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, developers', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Developers
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, docs', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Docs
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, podcast', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Podcast
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, careers', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Careers
+                    .u__cf.nav__divider.nav__mobile-section
+                        .c__grey Download Intercom&apos;s mobile apps
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, download-app-ios', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline iOS App
+                        a.nav__content-link.nav__content-link-third(data-track='mobile-nav-btn, download-app-android', href='#')
+                            h3.t__h5.c__dark-blue.f__regular.nav__headline Android App

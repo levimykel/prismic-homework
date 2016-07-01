@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="25" style="fill: #52d9a2"></circle>
+    <polygon points="29 36 29 34 21 35 21 37 29 36" style="fill: #fff"></polygon>
+    <path d="M2466.628,434.134a3.994,3.994,0,0,0,6.921,0l0.54-1Z" transform="translate(-2445.089 -395.134)" style="fill: #fff"></path>
+    <polygon points="29 36 29 34 21 35 21 37 29 36" style="fill: #fff"></polygon>
+    <path d="M2468.423,404.268a10.066,10.066,0,0,0-8.045,12.117c1.19,5.064,5.711,6.275,5.711,9.749,0,0,0,1.555,0,2l2.955-.369V416.117h-4.014v-2.031h10.059v2.031h-4.014v11.394l3.014-.377,0-1c0-3.968,6-5,6-12A10.007,10.007,0,0,0,2468.423,404.268Z" transform="translate(-2445.089 -395.134)" style="fill: #fff"></path>
+</svg>
